@@ -85,9 +85,6 @@ li {
 }
 
 .container {
-  /* border: 1px solid tomato; */
-  /* background-color: tomato; */
-
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -107,10 +104,6 @@ li {
   font-size: 26px;
   line-height: 1.2;
 }
-
-/* .paragraph {
-  font-style: normal;
-} */
 
 .nav .logo {
   color: var(--nav-logo-color);
@@ -242,6 +235,30 @@ li {
   margin-bottom: 0;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 1024px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 528px;
+  height: 581px;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg-color);
+}
+
 /* Особенности */
 
 .section-features {
@@ -321,12 +338,42 @@ p {
 }
 
 .work-photo {
+  position: relative;
+
   width: calc((100% - 2 * 30px) / 3);
   margin-right: 30px;
 }
 
+/* .work-photo::before {
+  display: inline-block;
+  position: absolute;
+  content: '';
+
+  width: 100%;
+  height: 70px;
+
+  background-color: rgba(47, 48, 58, 0.8);
+} */
+
 .work-photo:nth-child(3n) {
   margin-right: 0;
+}
+
+.label {
+  background-color: rgba(47, 48, 58, 0.8);
+  color: var(--primary-bg-color);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  padding: 27px 0px;
+  width: 100%;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
 }
 /* Наша команда */
 
@@ -498,6 +545,21 @@ button:focus {
   flex-wrap: wrap;
 }
 
+.submenu {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.6;
+
+  color: black;
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
 /* calc ((100% - кол-во маржинов в строке * значение маржина) / кол-во єлементов в строке */
 
 .projects-element {
@@ -516,6 +578,8 @@ button:focus {
 
 .projects-link {
   display: block;
+
+  position: relative;
 }
 
 .projects-link:hover,
