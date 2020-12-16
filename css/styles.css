@@ -169,15 +169,17 @@ li {
 }
 
 .item .current::before {
-  display: inline-block;
-  position: absolute;
   content: '';
 
-  background-color: var(--accent-color);
-  width: 100%;
-  height: 4px;
+  position: absolute;
   bottom: 0;
   left: 0;
+
+  display: inline-block;
+  background-color: var(--accent-color);
+
+  width: 100%;
+  height: 4px;
 
   border-radius: 2px;
 }
@@ -549,7 +551,8 @@ button {
   border-radius: 4px;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:hover,
@@ -557,6 +560,8 @@ button:focus {
   color: var(--primary-bg-color);
   background-color: var(--accent-color);
   border-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .filters {
@@ -582,21 +587,6 @@ button:focus {
   flex-wrap: wrap;
 }
 
-.submenu {
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  width: 100%;
-
-  padding: 63px 24px;
-  font-size: 18px;
-  line-height: 1.6;
-
-  color: var(--primary-bg-color);
-  background-color: rgba(33, 150, 243, 0.9);
-}
-
 /* calc ((100% - кол-во маржинов в строке * значение маржина) / кол-во єлементов в строке */
 
 .projects-element {
@@ -616,9 +606,36 @@ button:focus {
 .projects-link {
   display: block;
 
-  position: relative;
-
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.submenu {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.6;
+
+  color: var(--primary-bg-color);
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-link:hover .submenu,
+.projects-link:focus .submenu {
+  transform: translateY(0%);
 }
 
 .projects-link:hover,
@@ -627,13 +644,6 @@ button:focus {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-/* Альтернатива */
-/* .projects-element:not(:nth-child(3n)) {
-  margin-right: 30px;
-}
-.projects-element:not(:nth-last-child(-n + 3)) {
-  margin-bottom: 30px;
-} */
 .projects-title {
   color: var(--title-text-color);
   font-weight: 700;
@@ -676,15 +686,20 @@ button:focus {
 .clients-link {
   display: flex;
   flex-wrap: wrap;
+
   border: 1px solid var(--border--color);
-  box-sizing: border-box;
   border-radius: 4px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   width: 170px;
+
   height: 90px;
   padding: 0;
   margin: 0;
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-card {
