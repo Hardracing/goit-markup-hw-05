@@ -314,7 +314,7 @@ li {
   background: var(--primary-bg-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-
+  /*  */
   margin: 8px;
   width: 30px;
   height: 30px;
